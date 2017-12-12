@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Confluent Kafka Client", "Confluent Kafka Client\Confluent Kafka Client.csproj", "{88BE98B4-9832-47BC-BC58-A768D610D3EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88BE98B4-9832-47BC-BC58-A768D610D3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88BE98B4-9832-47BC-BC58-A768D610D3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88BE98B4-9832-47BC-BC58-A768D610D3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88BE98B4-9832-47BC-BC58-A768D610D3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2675ECFE-58D0-4D31-B7D3-F5DF0E6065DE}
+	EndGlobalSection
+EndGlobal
