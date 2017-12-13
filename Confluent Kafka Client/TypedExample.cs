@@ -27,15 +27,13 @@ namespace Confluent_Kafka_Client
 			};
 
 			//use the generic typed consumer/producer since the non-generic is deprecated
-			//Using<string, string> typed producer, this works fine.  The moment I change to<Guid, TestClassForKafka>, I don't get production and don't get errors
 			_producer = new Producer<Guid, TestClassForKafka>(configSettings, keySerializer: new NewtonsoftSerializer<Guid>(Encoding.UTF8), valueSerializer: new NewtonsoftSerializer<TestClassForKafka>(Encoding.UTF8));
 			ProduceTenMessages(topicToProduceAndConsumeFrom);
 
-			//Using <string, string> typed consumer, this works fine.  The moment I change to <Guid, TestClassForKafka>, I get the exception: $exception	{"'group.id' configuration parameter is required and was not specified."}	System.ArgumentException
-			//_consumer = new Confluent.Kafka.Consumer<Guid, TestClassForKafka>(configSettings, keyDeserializer: new NewtonsoftDeserializer<Guid>(Encoding.UTF8), valueDeserializer: new NewtonsoftDeserializer<TestClassForKafka>(Encoding.UTF8));
-			//ConsumeMessages(topicToProduceAndConsumeFrom);
+			_consumer = new Confluent.Kafka.Consumer<Guid, TestClassForKafka>(configSettings, keyDeserializer: new NewtonsoftDeserializer<Guid>(Encoding.UTF8), valueDeserializer: new NewtonsoftDeserializer<TestClassForKafka>(Encoding.UTF8));
+			ConsumeMessages(topicToProduceAndConsumeFrom);
 
-			Console.WriteLine("Complete.");
+			Console.WriteLine("Complete. Hit any key to exit.");
 			Console.ReadLine();
 		}
 
@@ -70,7 +68,7 @@ namespace Confluent_Kafka_Client
 					{
 						Console.WriteLine("task not completed after flush");
 					}
-					else if (reportAfterFlush.Result.Error != null)
+					else if (reportAfterFlush.Result.Error.HasError)
 					{
 						Console.WriteLine($"encountered error: {reportAfterFlush.Result.Error}");
 					}
@@ -136,7 +134,7 @@ namespace Confluent_Kafka_Client
 			Console.WriteLine("press Ctrl+C to exit");
 			while (!cancelled)
 			{
-				_consumer.Poll(millisecondsTimeout: 100);
+				_consumer.Poll(millisecondsTimeout: 5000);
 				Console.WriteLine("\rdone polling");
 			}
 

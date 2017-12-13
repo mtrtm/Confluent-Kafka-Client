@@ -28,8 +28,7 @@ namespace Confluent_Kafka_Client
 
 		public IEnumerable<KeyValuePair<string, object>> Configure(IEnumerable<KeyValuePair<string, object>> config, bool isKey)
 		{
-			//don't do any config for this test deserializer
-			return new KeyValuePair<string, object>[0];
+			return config;
 		}
 	}
 }
